@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- input to getActivityList		: applicationDomain -->
+<!-- output structure from JMS connector: as below -->
+<jms:ActivityList xmlns:jms="http://www.jitterbit.com/connectors/sugarcrm/schema"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jitterbit.com/connectors/sugarcrm/schema ../Metadata.xsd">
+  <jms:ActivityName ApplicationDomain="General" type="Dedicated API Call">SendMessage</jms:ActivityName>
+  <jms:ActivityName ApplicationDomain="General" type="Dedicated API Call">PollMessage</jms:ActivityName>
+  <jms:ActivityName ApplicationDomain="General" type="Dedicated API Call">GetMessage</jms:ActivityName>
+  <jms:ActivityName ApplicationDomain="General" type="Dedicated API Call">QueueRequestReply</jms:ActivityName>
+  <jms:ActivityName ApplicationDomain="General" type="Dedicated API Call">PublishMessage</jms:ActivityName>
+  <jms:ActivityName ApplicationDomain="General" type="Dedicated API Call">SubscribeMessage</jms:ActivityName>
+</jms:ActivityList>

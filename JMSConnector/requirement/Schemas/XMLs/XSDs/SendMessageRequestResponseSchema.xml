@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jms:sendMessageRequest activityName="SendMessage" direction="input" xmlns:jms="http://www.jitterbit.com/connectors/jms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jitterbit.com/connectors/jms SendMessageRequestResponseSchema.xsd ">
+  <jms:sendMessageActivityMetadata>
+    <jms:QueueName>jms:QueueName</jms:QueueName>
+    <jms:MessageType>jms:MessageType</jms:MessageType>
+    <jms:DeliveryMode>jms:DeliveryMode</jms:DeliveryMode>
+    <jms:TimeToLive>jms:TimeToLive</jms:TimeToLive>
+    <jms:Priority>jms:Priority</jms:Priority>
+  </jms:sendMessageActivityMetadata>
+  <jms:Message>
+    <jms:MessageHeaders>
+      <jms:JMSCorrelationID>jms:JMSCorrelationID</jms:JMSCorrelationID>
+      <jms:JMSDeliveryMode>jms:JMSDeliveryMode</jms:JMSDeliveryMode>
+      <jms:JMSDestination>jms:JMSDestination</jms:JMSDestination>
+      <jms:JMSExpiration>jms:JMSExpiration</jms:JMSExpiration>
+      <jms:JMSMessageID>jms:JMSMessageID</jms:JMSMessageID>
+      <jms:JMSPriority>jms:JMSPriority</jms:JMSPriority>
+      <jms:JMSRedelivered>jms:JMSRedelivered</jms:JMSRedelivered>
+      <jms:JMSReplyTo>jms:JMSReplyTo</jms:JMSReplyTo>
+      <jms:JMSTimestamp>jms:JMSTimestamp</jms:JMSTimestamp>
+      <jms:JMSType>jms:JMSType</jms:JMSType>
+    </jms:MessageHeaders>
+    <jms:MessageProperties>
+      <jms:MessageProperty>
+        <jms:name>jms:name</jms:name>
+        <jms:value>jms:value</jms:value>
+      </jms:MessageProperty>
+    </jms:MessageProperties>
+    <jms:MessageBody>jms:MessageBody</jms:MessageBody>
+  </jms:Message>
+</jms:sendMessageRequest>

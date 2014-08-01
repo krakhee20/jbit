@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+elementFormDefault="qualified"
+targetNamespace="http://www.jitterbit.com/connectors/jms" 
+xmlns:jms="http://www.jitterbit.com/connectors/jms"
+xmlns:ns1="http://www.jitterbit.com/connectorframework/metadata">
+	
+	<xs:import namespace="http://www.jitterbit.com/connectorframework/metadata"  
+	schemaLocation="Metadata.xsd"/>
+	    
+	<xs:element name="listenMessageRequest" type="jms:listenMessageRequest"/>
+	<xs:complexType name="listenMessageRequest">
+		<xs:complexContent>
+			<xs:extension base="ns1:activityMetadataRequest">
+				<xs:sequence>
+					<xs:element name="listenMessageActivityMetadata" type="jms:listenMessageActivityMetadata"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="listenMessageResponse" type="jms:listenMessageResponse"/>
+	<xs:complexType name="listenMessageResponse">
+		<xs:complexContent>
+			<xs:extension base="ns1:activityMetadataResponse">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+    
+    <xs:complexType name="listenMessageActivityMetadata" >
+        <xs:sequence>
+            <xs:element name="queueName" type="xs:string"/>
+            <xs:element name="messageType" type="xs:string"/>
+            <xs:element name="messageSelector" type="xs:string"/>
+			<xs:element name="acknowledgeMode" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

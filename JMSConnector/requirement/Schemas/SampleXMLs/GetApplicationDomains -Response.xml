@@ -1,0 +1,17 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schema="http://www.jitterbit.com/connectors/sugarcrm/schema">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schema:AppicationDomains>
+            <schema:ApplicationDomain name="Project Management" hasChildDomains="true">
+                <schema:ApplicationDomain name="Project Planning" hasChildDomains="true">
+                    <schema:ApplicationDomain name="Resource Management" hasChildDomains="false"/>
+                </schema:ApplicationDomain>
+            </schema:ApplicationDomain>
+            <schema:ApplicationDomain name="Production" hasChildDomains="true">
+                <schema:ApplicationDomain name="Producion Plannning" hasChildDomains="false"/>
+                <schema:ApplicationDomain name="Producion Execution" hasChildDomains="false"/>
+            </schema:ApplicationDomain>
+        </schema:AppicationDomains>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

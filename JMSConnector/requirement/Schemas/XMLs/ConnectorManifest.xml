@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Connector provider="Jitterbit" endpoint="JMS" protocol="REST" version="0.1">
+	<propertygroup name="Connection properties" >
+		<property name="JNDI Initial Factory" type="String" length="256" />
+		<property name="Provider URL" type="String" length="128" />
+		<property name="Provider Package" type="String" length="256" />
+		<property name="Transport Protocol" type="String" length="128"/>
+		<property name="UserName" type="String" length="64"/>
+		<property name="Password" type="String" length="8"/>
+		<property name="Description" type="String" length="512"/>
+		<property name="isOptional" type="bool" />
+	</propertygroup>
+	<propertygroup name="Behavior properties" >
+		<property name="OnError" type="String" length="256" />
+	</propertygroup>
+</Connector>
+

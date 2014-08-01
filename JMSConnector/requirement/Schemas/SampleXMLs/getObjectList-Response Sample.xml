@@ -1,0 +1,13 @@
+<!-- Auto generated server sample response. -->
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schema="http://www.jitterbit.com/connectors/sugarcrm/schema">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schema:ObjectList>
+            <schema:ObjectName type="Project" parentObjectType="baseObject"></schema:ObjectName>
+            <schema:ObjectName type="Resource" parentObjectType="baseObject"></schema:ObjectName>
+            <schema:ObjectName type="ProjectManager" parentObjectType="Resource"></schema:ObjectName>
+            <schema:ObjectName type="Client" parentObjectType="baseObject"></schema:ObjectName>
+        </schema:ObjectList>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

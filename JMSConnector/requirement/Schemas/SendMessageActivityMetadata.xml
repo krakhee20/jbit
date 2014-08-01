@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SendMessageMetaData xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SendMessageActivityMetadata.xsd">
+  <QueueName>QueueName</QueueName>
+  <MessageType>MessageType</MessageType>
+  <DeliveryMode>DeliveryMode</DeliveryMode>
+  <TimeToLive>TimeToLive</TimeToLive>
+  <Priority>Priority</Priority>
+</SendMessageMetaData>

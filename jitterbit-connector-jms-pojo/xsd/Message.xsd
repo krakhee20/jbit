@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.jitterbit.com/connectors/jms/message" 
+xmlns:tns="http://www.jitterbit.com/connectors/jms/message" >
+	<xs:complexType name="messageHeaders">
+		<xs:sequence>
+			<xs:element name="JMSCorrelationID" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSDeliveryMode" type="xs:int" minOccurs="1"/>
+			<xs:element name="JMSDestination" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSExpiration" type="xs:long" minOccurs="1"/>
+			<xs:element name="JMSMessageID" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSPriority" type="xs:int" minOccurs="1"/>
+			<xs:element name="JMSRedelivered" type="xs:boolean" minOccurs="1"/>
+			<xs:element name="JMSReplyTo" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSTimestamp" type="xs:long" minOccurs="1"/>
+			<xs:element name="JMSType" type="xs:string" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+<!--The below Message Properties could be set by a JMS Provider when a message is sent, also not all
+JMS Providers support it.Hence commenting it for now    	
+	<xs:complexType name="messageProperties">
+		<xs:sequence>
+			<xs:element name="JMSXUserID" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSXDeliveryCount" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSXGroupID" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSXGroupSeq" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSXRcvTimestamp" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSXAppID" type="xs:string" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+ -->	
+ 	<xs:complexType name="customMessageProperty">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="customMessagePropertyList">
+		<xs:sequence>
+			<xs:element name="customMessageProperty" type="tns:customMessageProperty" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="value" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="connectorMessage">
+		<xs:sequence>
+			<xs:element name="messageHeaders" type="tns:messageHeaders"/>
+<!-- 			<xs:element name="messageProperties" type="tns:messageProperties"/>
+ -->			<xs:element name="customMessageProperties" type="tns:customMessagePropertyList"/>
+			<xs:element name="messageBody" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="messageList">
+		<xs:sequence>
+			<xs:element name="message" type="tns:connectorMessage" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

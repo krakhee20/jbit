@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:ObjectList xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jitterbit.com/connectors/sugarcrm/schema ../Metadata.xsd ">
+  <tns:ObjectName parentObjectType="ABC" type="String"/>
+</tns:ObjectList>

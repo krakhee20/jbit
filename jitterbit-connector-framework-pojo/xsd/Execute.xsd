@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema"
+    targetNamespace="http://www.jitterbit.com/connectors/sugarcrm/schema"
+    xmlns:ns1="http://www.jitterbit.com/connectorframework/metadata" >
+    <xs:import namespace="http://www.jitterbit.com/connectorframework/metadata"
+    schemaLocation="Metadata.xsd" />
+
+    <xs:complexType name="executeRequest">
+            <xs:sequence>
+                <xs:element name="activityName" type="xs:string"/>
+<!--                 <xs:element name="payload" type="xs:anyType"/> -->
+				<xs:element name="activityMetadataRequest" type="ns1:activityMetadataRequest"></xs:element> 
+            </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="executeResponse">
+            <xs:sequence>
+                <xs:element name="activityName" type="xs:string"/>
+<!--                 <xs:element name="payload" type="xs:anyType"/> -->
+				<xs:element name="activityMetadataResponse" type="ns1:activityMetadataResponse"></xs:element> 
+            </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="asynchronousRequestStructure">
+        <xs:complexContent>
+            <xs:extension base="tns:executeRequest">
+                <xs:sequence>
+                    <xs:element name="CallBackHandlerString" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="executeRequest" type="tns:executeRequest"/>
+    <xs:element name="executeResponse" type="tns:executeResponse"/>
+    <xs:element name="executeAsyncRequest" type="tns:asynchronousRequestStructure"/>
+</xs:schema>

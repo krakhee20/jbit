@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.jitterbit.com/connectors/jms" 
+xmlns:jms="http://www.jitterbit.com/connectors/jms" elementFormDefault="qualified">
+	<xs:complexType name="typMessageHeaders">
+		<xs:sequence>
+			<xs:element name="JMSCorrelationID" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSDeliveryMode" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSDestination" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSExpiration" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSMessageID" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSPriority" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSRedelivered" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSReplyTo" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSTimestamp" type="xs:string" minOccurs="1"/>
+			<xs:element name="JMSType" type="xs:string" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="typMessageProperty">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="typMessagePropertyList">
+		<xs:sequence>
+			<xs:element name="MessageProperty" type="jms:typMessageProperty" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="typMessage">
+		<xs:sequence>
+			<xs:element name="MessageHeaders" type="jms:typMessageHeaders"/>
+			<xs:element name="MessageProperties" type="jms:typMessagePropertyList"/>
+			<xs:element name="MessageBody" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

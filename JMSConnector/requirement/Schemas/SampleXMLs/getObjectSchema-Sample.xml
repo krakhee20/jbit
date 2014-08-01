@@ -1,0 +1,38 @@
+<!-- Auto generated server sample response. -->
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schema="http://www.jitterbit.com/connectors/sugarcrm/schema">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schema:ObjectMetadata ObjectName="Project Manager" ObjectType="Standard Object">
+            <schema:schema>[[CDATA <?xml version="1.0" encoding="UTF-8"?>
+                <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+                    <xs:complexType name="baseObject">
+                        <xs:sequence>
+                            <xs:element name="FirstName" type="xs:string"/>
+                            <xs:element name="LastName" type="xs:string"/>
+                            <xs:element name="FullName" type="xs:string"/>
+                            <xs:element name="AddressLine1" type="xs:string"/>
+                            <xs:element name="AddressLine2" type="xs:string"/>
+                            <xs:element name="City" type="xs:string"/>
+                            <xs:element name="State" type="xs:string"/>
+                            <xs:element name="Country" type="xs:string"/>
+                            <xs:element name="Zip" type="xs:string"/>
+                            <xs:element name="Telephone" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:complexType name="ProjectManager">
+                        <xs:complexContent>
+                            <xs:extension base="baseObject">
+                                <xs:sequence>
+                                    <xs:element name="SecurityLevel" type="xs:string"/>
+                                    <xs:element name="OfficeLocation" type="xs:string"/>
+                                    <xs:element name="CellPhone" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:schema>
+                ]]</schema:schema>
+        </schema:ObjectMetadata>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publishMessageRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDs/PublishMessageRequestResponseSchema.xsd">
+  <publishMessageActivityMetadata>
+    <TopicName>TopicName</TopicName>
+    <MessageType>MessageType</MessageType>
+    <DeliveryMode>DeliveryMode</DeliveryMode>
+    <TimeToLive>TimeToLive</TimeToLive>
+    <Priority>Priority</Priority>
+  </publishMessageActivityMetadata>
+  <Message>
+    <MessageHeaders>
+      <JMSCorrelationID>JMSCorrelationID</JMSCorrelationID>
+      <JMSDeliveryMode>JMSDeliveryMode</JMSDeliveryMode>
+      <JMSDestination>JMSDestination</JMSDestination>
+      <JMSExpiration>JMSExpiration</JMSExpiration>
+      <JMSMessageID>JMSMessageID</JMSMessageID>
+      <JMSPriority>JMSPriority</JMSPriority>
+      <JMSRedelivered>JMSRedelivered</JMSRedelivered>
+      <JMSReplyTo>JMSReplyTo</JMSReplyTo>
+      <JMSTimestamp>JMSTimestamp</JMSTimestamp>
+      <JMSType>JMSType</JMSType>
+    </MessageHeaders>
+    <MessageProperties>
+      <MessageProperty>
+        <name>name</name>
+        <value>value</value>
+      </MessageProperty>
+    </MessageProperties>
+    <MessageBody>MessageBody</MessageBody>
+  </Message>
+</publishMessageRequest>

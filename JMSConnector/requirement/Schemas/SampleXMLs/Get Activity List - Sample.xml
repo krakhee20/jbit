@@ -1,0 +1,14 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:schema="http://www.jitterbit.com/connectors/sugarcrm/schema">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <schema:ActivityList>
+            <schema:ActivityName ApplicationDomain="Project Planning" type="Standard API Call">Retrieve</schema:ActivityName>
+            <schema:ActivityName ApplicationDomain="Project Planning" type="Standard API Call">Update</schema:ActivityName>
+            <schema:ActivityName ApplicationDomain="Project Planning" type="Standard API Call">Create</schema:ActivityName>
+            <schema:ActivityName ApplicationDomain="Project Planning" type="Standard API Call">Delete</schema:ActivityName>
+            <schema:ActivityName ApplicationDomain="Project Planning" type="Standard API Call">Upsert</schema:ActivityName>
+            <schema:ActivityName ApplicationDomain="Project Planning" type="Dedicated API Call">Get Environment</schema:ActivityName>
+        </schema:ActivityList>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

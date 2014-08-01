@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:ActivityMetadata ActivityName="" ActivityType="" ParentAppDomain="" 
+xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema"
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.jitterbit.com/connectors/sugarcrm/schema ../Metadata.xsd ">
+  <tns:schema xsi:type="xs:anyType"/>
+</tns:ActivityMetadata>

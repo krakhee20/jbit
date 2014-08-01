@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subscribeMessageRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDs/SubscribeMessageRequestResponseSchema.xsd">
+  <subscribeMessageActivityMetadata>
+    <TopicName>TopicName</TopicName>
+    <Durable>true</Durable>
+    <ClientID>ClientID</ClientID>
+    <DurableSubscriptionName>DurableSubscriptionName</DurableSubscriptionName>
+    <MessageType>MessageType</MessageType>
+    <MessageSelector>MessageSelector</MessageSelector>
+  </subscribeMessageActivityMetadata>
+</subscribeMessageRequest>

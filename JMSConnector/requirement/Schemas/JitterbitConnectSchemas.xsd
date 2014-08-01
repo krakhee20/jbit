@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema" targetNamespace="http://www.jitterbit.com/connectors/sugarcrm/schema">
+
+    <xs:include schemaLocation="Faults.xsd"/>
+    <xs:include schemaLocation="SessionManagement.xsd"/>
+    <xs:include schemaLocation="Metadata.xsd"/>
+    <xs:include schemaLocation="Execute.xsd"/>
+</xs:schema>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema"
+    targetNamespace="http://www.jitterbit.com/connectors/sugarcrm/schema">
+	<xs:simpleType name="typeEndpoint">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NetSuite"/>
+			<xs:enumeration value="SugarCRM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="typcredentials">
+		<xs:sequence>
+			<xs:element name="customer" type="xs:string"/>
+			<xs:element name="process_id" type="xs:string"/>
+			<xs:element name="endpoint" type="tns:typeEndpoint"/>			
+			<xs:element name="username" type="xs:string"/>
+			<xs:element name="password" type="xs:string"/>
+			<xs:element name="url" type="xs:string"/>
+			<xs:element name="account" type="xs:string"/>
+			<xs:element name="isExclusive" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="sessionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sessionId1" type="xs:string"/>
+				<xs:element name="sessionId2" type="xs:string"/>
+				<xs:element name="sessionKey" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+<!-- added -->
+	<xs:element name="poolSizeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="success" type="xs:boolean"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Schema Elements -->
+	<xs:element name="credentials" type="tns:typcredentials"/>
+	<xs:element name="poolSize" type="xs:int"/>
+	<xs:element name="sessionKey" type="xs:string"/>
+
+</xs:schema>

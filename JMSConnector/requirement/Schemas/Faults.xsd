@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema"
+    targetNamespace="http://www.jitterbit.com/connectors/sugarcrm/schema">
+
+    <xs:complexType name="typFault">
+        <xs:sequence>
+            <xs:element name="ErrorCode" type="xs:string"/>
+            <xs:element name="ErrorMessage" type="xs:string"/>
+            <xs:element name="StackTrace" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <!-- SOAP Faults -->
+    <xs:element name="ConnectionError" type="tns:typFault"/>
+    <xs:element name="InvalidArguments" type="tns:typFault"/>
+    <xs:element name="ExecutionError" type="tns:typFault"/>
+    <xs:element name="InitializationError" type="tns:typFault"/>
+    
+</xs:schema>

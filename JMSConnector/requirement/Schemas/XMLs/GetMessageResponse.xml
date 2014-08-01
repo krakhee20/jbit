@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<getMessageResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDs/GetMessageRequestResponseSchema.xsd">
+  <Message>
+    <MessageHeaders>
+      <JMSCorrelationID>JMSCorrelationID</JMSCorrelationID>
+      <JMSDeliveryMode>JMSDeliveryMode</JMSDeliveryMode>
+      <JMSDestination>JMSDestination</JMSDestination>
+      <JMSExpiration>JMSExpiration</JMSExpiration>
+      <JMSMessageID>JMSMessageID</JMSMessageID>
+      <JMSPriority>JMSPriority</JMSPriority>
+      <JMSRedelivered>JMSRedelivered</JMSRedelivered>
+      <JMSReplyTo>JMSReplyTo</JMSReplyTo>
+      <JMSTimestamp>JMSTimestamp</JMSTimestamp>
+      <JMSType>JMSType</JMSType>
+    </MessageHeaders>
+    <MessageProperties>
+      <MessageProperty>
+        <name>name</name>
+        <value>value</value>
+      </MessageProperty>
+    </MessageProperties>
+    <MessageBody>MessageBody</MessageBody>
+  </Message>
+</getMessageResponse>

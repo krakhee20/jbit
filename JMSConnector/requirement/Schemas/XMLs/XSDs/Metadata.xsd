@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema"
+    targetNamespace="http://www.jitterbit.com/connectors/sugarcrm/schema">
+    <xs:include schemaLocation="SessionManagement.xsd"/>
+    <!-- Metadata Related -->
+
+
+    
+    <xs:element name="ApplicationDomains">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:ApplicationDomain" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ApplicationDomain">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:ApplicationDomain" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute use="required" name="name"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ActivityName">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                        <xs:attribute name="ApplicationDomain" use="required" type="xs:string"/>
+                    <xs:attribute name="type" use="required"  type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ActivityList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:ActivityName" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="ActivityMetadata">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="schema" type="xs:anyType" minOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="ActivityName" type="xs:string"/>
+            <xs:attribute name="ParentAppDomain" type="xs:string"/>
+            <xs:attribute name="ActivityType" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getActivityMetadataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ActivityName" type="xs:string"/>
+                <xs:element name="ApplicationDomain" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getActivityList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ApplicationDomain" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getObjectMetadataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ObjectName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ObjectList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ObjectName" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence/>
+                        <xs:attribute name="type" type="xs:string"/>
+                        <xs:attribute name="parentObjectType" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="ObjectMetadata">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="schema" type="xs:anyType"/>
+            </xs:sequence>
+            <xs:attribute name="ObjectName" type="xs:string"/>
+            <xs:attribute name="ObjectType" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

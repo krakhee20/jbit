@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:tns="http://www.jitterbit.com/connectorframework/metadata" 
+targetNamespace="http://www.jitterbit.com/connectorframework/metadata" 
+elementFormDefault="qualified">
+
+	<!-- Metadata Related -->
+
+	<!--Method:	getApplicationDomains()
+		@param: null
+		@return:ApplicationDomainsResponse--> 
+<!-- 	<xs:element name="applicationDomainsRequest">		
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="connectorGuid" type="xs:string">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+ -->
+	<xs:complexType name="applicationDomainsResponse">
+		<xs:sequence>
+			<xs:element name="applicationDomain" type="tns:applicationDomain" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="applicationDomain">
+		<xs:sequence>
+			<xs:element name="applicationDomain" type="tns:applicationDomain"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="childDomainsPresent" type="xs:boolean"/>
+	</xs:complexType>
+	
+	<!--Method:	getActivityList()
+		@param: ActivityListRequest
+		@return:ActivityListResponse-->
+	<xs:element name="activityListRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="applicationDomain" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>	 
+	</xs:element>
+	
+	<xs:element name="activityListResponse">	
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="activity" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="activityName" type="xs:string"/>
+						<xs:attribute name="applicationDomain" type="xs:string"/>
+						<xs:attribute name="activityType" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>	 
+	</xs:element>	
+
+	<xs:complexType name="activityMetadata">
+		<xs:sequence>
+			<xs:element name="activityName" type="xs:string"/>
+			<xs:element name="applicationDomain" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="activityMetadataRequest">
+		<xs:sequence>
+			<xs:element name="activityName" type="xs:string"/>
+			<xs:element name="applicationDomain" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="direction" use="required" fixed="input"/>
+	</xs:complexType>
+
+	<xs:complexType name="activityMetadataResponse">
+		<xs:sequence>
+			<xs:element name="schema" type="xs:anyType"/>
+		</xs:sequence>
+		<xs:attribute name="activityName" type="xs:string"/>
+		<xs:attribute name="parentAppDomain" type="xs:string"/>
+		<xs:attribute name="activityType" type="xs:string"/>
+		<xs:attribute use="required" name="direction" fixed="output"/>
+	</xs:complexType>
+	
+	<!--Method:	getObjectList()
+		@param: ObjectListRequest
+		@return:ObjectListResponse-->
+	<xs:complexType name="objectListRequest">
+		<xs:sequence>
+			<xs:element name="activityName" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="objectListResponse">
+		<xs:sequence>
+			<xs:element name="objectName" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence/>
+					<xs:attribute name="type" type="xs:string"/>
+					<xs:attribute name="parentObjectType" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!--Method:	getObjectMetadata()
+		@param: ObjectMetadataRequest
+		@return:ObjectMetadataResponse-->
+	<xs:complexType name="objectMetadataRequest">
+		<xs:sequence>
+			<xs:element name="objectName" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="objectMetadataResponse">
+		<xs:sequence>
+			<xs:element name="schema" type="xs:anyType"/>
+		</xs:sequence>
+		<xs:attribute name="objectName" type="xs:string"/>
+		<xs:attribute name="objectType" type="xs:string"/>
+	</xs:complexType>
+</xs:schema>

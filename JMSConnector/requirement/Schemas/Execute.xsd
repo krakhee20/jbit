@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tns="http://www.jitterbit.com/connectors/sugarcrm/schema"
+    targetNamespace="http://www.jitterbit.com/connectors/sugarcrm/schema">
+
+    <xs:complexType name="typExecuteStructure">
+            <xs:sequence>
+                <xs:element name="activity_name" type="xs:string"/>
+                <xs:element name="payload" type="xs:anyType"/>
+            </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="typAsynchronousRequestStructure">
+        <xs:complexContent>
+            <xs:extension base="tns:typExecuteStructure">
+                <xs:sequence>
+                    <xs:element name="CallBackHandlerString" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="executeRequest" type="tns:typExecuteStructure"/>
+    <xs:element name="executeResponse" type="tns:typExecuteStructure"/>
+    <xs:element name="executeAyncRequest" type="tns:typAsynchronousRequestStructure"/>
+</xs:schema>

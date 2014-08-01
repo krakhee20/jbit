@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.jitterbit.com/connectors/jms" 
+xmlns:jms="http://www.jitterbit.com/connectors/jms"
+xmlns:ns1="http://www.jitterbit.com/connectorframework/sessionmgmt" 
+elementFormDefault="qualified">
+
+<xs:import namespace="http://www.jitterbit.com/connectorframework/sessionmgmt"
+			schemaLocation="NewSessionManagement.xsd" />
+			
+<!-- 	<xs:complexType name="connectorPropertyGroups">
+		<xs:complexContent>
+			<xs:extension base="ns1:connectorPropertyGroups"/>
+		</xs:complexContent>
+	</xs:complexType>	
+	
+ 	<xs:complexType name="connectorPropertyGroup">
+		<xs:sequence>
+			<xs:element name="propertyGroupName" type="xs:string" />
+			<xs:element name="connectorProperties" type="tns:connectorProperties"/>
+		</xs:sequence>
+	</xs:complexType>	
+	
+	<xs:complexType name="connectorProperties">
+		<xs:sequence>
+			<xs:element name="connectorPropertyName" type="tns:connectorProperty" />
+		</xs:sequence>
+	</xs:complexType>
+	
+ -->	
+ 	<xs:complexType name="jmsConnectorProperty">
+		<xs:complexContent>
+			<xs:extension base="ns1:connectorProperty">
+				<xs:sequence>
+					<xs:element name="queue" type="jms:queue" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="topic" type="jms:topic" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+			
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="queue">
+		<xs:sequence>
+			<xs:element name="key" type="xs:string" />
+			<xs:element name="value" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="topic">
+		<xs:sequence>
+			<xs:element name="key" type="xs:string" />
+			<xs:element name="value" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

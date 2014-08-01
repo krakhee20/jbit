@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="publishMessageRequest" type="publishMessageRequest"/> 
+    <xs:complexType name="publishMessageRequest">
+        <xs:sequence>
+            <xs:element name="publishMessageActivityMetadata" type="typPublishMessageMetadata"/>
+            <xs:element name="Message" type="typMessage"/>
+        </xs:sequence>
+    </xs:complexType>
+
+	<xs:element name="publishMessageResponse" type="xs:string" default="No response expected"/>
+
+    <xs:complexType name="typPublishMessageMetadata" >
+        <xs:sequence>
+            <xs:element name="TopicName" type="xs:string"/>
+            <xs:element name="MessageType" type="xs:string"/>
+            <xs:element name="DeliveryMode" type="xs:string"/>
+            <xs:element name="TimeToLive" type="xs:string"/>
+            <xs:element name="Priority" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="typMessageHeaders" >
+        <xs:sequence>
+            <xs:element name="JMSCorrelationID" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSDeliveryMode" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSDestination" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSExpiration" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSMessageID" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSPriority" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSRedelivered" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSReplyTo" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSTimestamp" type="xs:string" minOccurs="1"/>
+            <xs:element name="JMSType" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="typMessageProperty">
+    	<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="value" type="xs:string" />
+		</xs:sequence>		
+    </xs:complexType>
+    
+    <xs:complexType name="typMessagePropertyList">
+    	<xs:sequence>
+        	<xs:element  name="MessageProperty" type="typMessageProperty" minOccurs="1" maxOccurs="unbounded">
+	        </xs:element>
+		</xs:sequence>	        
+    </xs:complexType>
+    
+    <xs:complexType name="typMessage" >
+        <xs:sequence>
+            <xs:element name="MessageHeaders" type="typMessageHeaders"/>
+            <xs:element name="MessageProperties" type="typMessagePropertyList" />
+            <xs:element name="MessageBody" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

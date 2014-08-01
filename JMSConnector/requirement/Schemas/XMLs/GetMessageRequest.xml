@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<getMessageRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDs/GetMessageRequestResponseSchema.xsd">
+  <getMessageActivityMetadata>
+    <QueueName>QueueName</QueueName>
+    <MessageType>MessageType</MessageType>
+    <MessageSelector>MessageSelector</MessageSelector>
+  </getMessageActivityMetadata>
+</getMessageRequest>

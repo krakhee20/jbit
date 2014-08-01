@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+targetNamespace="http://www.jitterbit.com/connectors/jms" 
+xmlns:jms="http://www.jitterbit.com/connectors/jms"
+xmlns:ns1="http://www.jitterbit.com/connectors/sugarcrm/schema"
+>
+<xs:include schemaLocation="Message.xsd"/>
+<xs:import namespace="http://www.jitterbit.com/connectors/sugarcrm/schema"  schemaLocation="Metadata.xsd"/>
+
+	<xs:element name="sendMessageRequest" type="jms:sendMessageRequest"/> 
+    <xs:complexType name="sendMessageRequest">
+        <xs:sequence>
+            <xs:element name="sendMessageActivityMetadata" type="jms:typSendMessageMetadata"/>
+            <xs:element name="Message" type="jms:typMessage"/>
+        </xs:sequence>
+		<xs:attribute use="required" name="activityName" fixed="SendMessage"/>
+		<xs:attribute use="required" name="direction" fixed="input"/>
+    </xs:complexType>
+
+
+	<xs:element name="sendMessageResponse" type="ns1:ActivityMetadata" />
+	 
+    <xs:complexType name="typSendMessageMetadata">
+        <xs:sequence>
+            <xs:element name="QueueName" type="xs:string"/>
+            <xs:element name="MessageType" type="xs:string"/>
+            <xs:element name="DeliveryMode" type="xs:string"/>
+            <xs:element name="TimeToLive" type="xs:string"/>
+            <xs:element name="Priority" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

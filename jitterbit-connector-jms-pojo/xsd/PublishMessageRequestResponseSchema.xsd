@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.jitterbit.com/connectors/jms" 
+xmlns:jms="http://www.jitterbit.com/connectors/jms" 
+xmlns:ns1="http://www.jitterbit.com/connectorframework/metadata" 
+xmlns:ns2="http://www.jitterbit.com/connectors/jms/message" 
+elementFormDefault="qualified">
+	<xs:import namespace="http://www.jitterbit.com/connectors/jms/message" schemaLocation="Message.xsd"/>
+	<xs:import namespace="http://www.jitterbit.com/connectorframework/metadata" 
+	schemaLocation="Metadata.xsd"/>
+    
+	<xs:element name="publishMessageRequest" type="jms:publishMessageRequest"/>
+	<xs:complexType name="publishMessageRequest">
+		<xs:complexContent>
+			<xs:extension base="ns1:activityMetadataRequest">
+				<xs:sequence>
+					<xs:element name="publishMessageActivityMetadata" type="jms:publishMessageMetadata"/>
+					<xs:element name="messageList" type="ns2:messageList" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="publishMessageResponse" type="jms:publishMessageResponse"/> 
+	<xs:complexType name="publishMessageResponse" >
+		<xs:complexContent>
+			<xs:extension base="ns1:activityMetadataResponse">
+			</xs:extension>		
+		</xs:complexContent>
+	</xs:complexType>
+    
+    
+    <xs:complexType name="publishMessageMetadata" >
+        <xs:sequence>
+            <xs:element name="topicName" type="xs:string"/>
+			<xs:element name="messageType" type="jms:messageType"/>
+            <xs:element name="deliveryMode" type="xs:int"/>
+            <xs:element name="timeToLive" type="xs:long"/>
+			<xs:element name="priority" type="xs:int"/>
+			<xs:element name="acknowledgeMode" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+	<xs:simpleType name="messageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TEXT" />
+			<xs:enumeration value="BYTE" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

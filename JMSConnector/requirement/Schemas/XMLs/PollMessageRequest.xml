@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pollMessageRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDs/PollMessageRequestResponseSchema.xsd">
+  <pollMessageActivityMetadata>
+    <QueueName>QueueName</QueueName>
+    <MessageType>MessageType</MessageType>
+    <MessageSelector>MessageSelector</MessageSelector>
+    <PollingInterval>0</PollingInterval>
+  </pollMessageActivityMetadata>
+</pollMessageRequest>

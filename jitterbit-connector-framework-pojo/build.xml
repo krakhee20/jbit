@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="connector-framework-pojo.jitterbit.com" default="create-jb-connector-framework-pojo-jar">
+	<!--taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+	  <classpath>
+		<fileset dir="./lib" includes="*.jar" />
+	  </classpath>
+	</taskdef-->
+	<property environment="env"/>
+	<target name="remove-generated-pojos" description="Remove the generated POJOs">
+		<delete dir="src/org" />
+		<delete verbose="true">
+			<fileset dir="xsd" includes="*.episode" />
+		</delete>
+	</target>
+
+	<target name="generate-pojos" description="Re-generate the POJOs" depends="remove-generated-pojos">
+		<exec executable="${env.JAVA_HOME}/bin/xjc" failonerror="true">
+			<arg value="-no-header" />
+			<arg value="xsd/Metadata.xsd" />
+			<arg value="-d" />
+			<arg value="src" />
+			<arg value="-p" />
+			<arg value="org.jitterbit.connector.framework.pojo.metadata" />
+			<arg value="-episode" />
+			<arg value="xsd/metadata.episode" />
+		</exec>
+		
+		<exec executable="${env.JAVA_HOME}/bin/xjc" failonerror="true">
+			<arg value="-no-header" />
+			<arg value="xsd/NewSessionManagement.xsd" />
+			<arg value="-d" />
+			<arg value="src" />
+			<arg value="-p" />
+			<arg value="org.jitterbit.connector.framework.pojo.sessionmanagement" />
+		</exec> 
+		
+		<exec executable="${env.JAVA_HOME}/bin/xjc" failonerror="true">
+			<arg value="-no-header" />
+			<arg value="xsd/Execute.xsd" />
+			<arg value="-d" />
+			<arg value="src" />
+			<arg value="-p" />
+			<arg value="org.jitterbit.connector.framework.pojo.execute" />
+			<arg value="-extension" />
+			<arg value="-b" />
+			<arg value="xsd/metadata.episode" />
+			
+		</exec> 
+	</target>
+	
+	<target name="create-jb-connector-framework-pojo-jar" depends="generate-pojos" description="Build connector framework pojo project">
+		<mkdir dir="${class.dir}"/>
+		<javac srcdir="${jitterbit-connector-framework-pojo.dir}/src" destdir="${class.dir}" verbose="no" failonerror="true" debug="false"/>
+		<copy todir="${class.dir}">
+			<fileset dir="${jitterbit-connector-framework-pojo.dir}/src" excludes="**/*.java" />
+		</copy>
+		<jar destfile="${lib.dir}/jitterbit-connector-framework.jar" basedir="${class.dir}" />
+		<delete dir="${class.dir}" includeemptydirs="true" />
+	</target>
+</project>

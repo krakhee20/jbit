@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:element name="QueueRequestReplyRequest" > 
+    <xs:complexType >
+        <xs:sequence>
+            <xs:element name="QueueName" type="xs:string"/>
+            <xs:element name="ReplyToQueueName" type="xs:string"/>
+            <xs:element name="CorrelationID" type="xs:string"/>
+            <xs:element name="MessageType" type="xs:string"/>
+            <xs:element name="DeliveryMode" type="xs:string"/>
+            <xs:element name="TimeToLive" type="xs:string"/>
+            <xs:element name="ReceiveTimeout" type="xs:string"/>
+            <xs:element name="Priority" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>    
+
+<xs:element name="QueueRequestReplyResponse" > 
+	<xs:complexType >
+	    <xs:sequence>
+	    <!-- need to revisit -->
+            <xs:element name="CorrelationID" type="xs:string"/>
+	    </xs:sequence>
+	</xs:complexType>
+</xs:element>	
+
+</xs:schema>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- input to getApplicationDomain		: connectorGuid -->
+<!-- output structure from JMS connector: as below -->
+<jms:ApplicationDomains xmlns:jms="http://www.jitterbit.com/connectors/sugarcrm/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jitterbit.com/connectors/sugarcrm/schema ../Metadata.xsd ">
+  <jms:ApplicationDomain name="General"/>
+</jms:ApplicationDomains>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.2.xsd
+	   http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd" 
+       xmlns:p="http://www.springframework.org/schema/p">
+    <context:component-scan base-package="com.jitterbit.connector.jms" />
+    
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location">
+        	<value>/config/project.properties</value>
+    	</property>
+	</bean>    
+  
+ 	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate" >
+        <property name="environment">
+            <props>
+                <prop key="java.naming.provider.url">${provider.url}</prop>
+                <prop key="java.naming.factory.initial">${factory.initial}</prop>
+                <prop key="queue.SendQueue">${queue.send}</prop>
+                <prop key="queue.ReplyToQueue">${queue.replyTo}</prop>
+                <prop key="topic.PublishTopic">${topic.publish}</prop>
+                
+            </props>
+        </property>
+    </bean>
+        
+	<bean id="connectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean" >
+        <property name="jndiTemplate" ref ="jndiTemplate"/>
+        <property name="jndiName" value="ConnectionFactory"/>
+ 		<property name="cache" value="true" />
+    </bean>
+    
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate" >
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="topicDestination"/>
+        <property name="pubSubDomain" value="true"/>
+        <property name="deliveryPersistent" value="true"/>
+        <!-- Value = javax.jms.DeliveryMode.PERSISTENT -->
+        <property name="deliveryMode" value="2"/>
+		<!-- Value = javax.jms.Session.CLIENT_ACKNOWLEDGE -->
+     	<property name="sessionAcknowledgeMode" value="2"/>
+     	<!-- Needs to be true for the deliveryMode to work -->
+     	<property name="explicitQosEnabled" value="true"/>
+     	<property name="receiveTimeout" value="100"/>
+     	<property name="timeToLive" value="300"/>
+	</bean>        
+    
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+		<property name="defaultDestination" ref="queueDefaultDestination"/>
+        <property name="pubSubDomain" value="false"/>
+        <property name="deliveryPersistent" value="true"/>
+        <property name="deliveryMode" value="2"/>
+        <property name="timeToLive" value="10000"/>
+    </bean>    
+
+    <bean id="queueDefaultDestination" class="org.springframework.jndi.JndiObjectFactoryBean" >
+        <property name="jndiTemplate" ref="jndiTemplate"/>
+        <property name="jndiName" value="SendQueue"/>
+    </bean>
+   
+    <bean id="topicDestination" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiTemplate" ref="jndiTemplate"/>
+        <property name="jndiName" value="PublishTopic"/>
+    </bean>
+ 
+    <bean id="queueReplyToDestination" class="org.springframework.jndi.JndiObjectFactoryBean" >
+        <property name="jndiTemplate" ref="jndiTemplate"/>
+        <property name="jndiName" value="ReplyToQueue"/>
+    </bean>
+
+    <bean id="queueSender" class="com.jitterbit.connector.jms.JmsQueueSender" >
+        <property name="jmsQueueTemplate" ref="jmsQueueTemplate"/>
+    </bean>
+
+    <bean id="queueReceiver" class="com.jitterbit.connector.jms.JmsQueueReceiver" >
+        <property name="jmsQueueTemplate" ref="jmsQueueTemplate"/>
+    </bean>
+
+    <bean id="topicPublish" class="com.jitterbit.connector.jms.JmsTopicPublisher" >
+        <property name="jmsTemplate" ref="jmsTopicTemplate"/>
+    </bean>
+
+    <bean id="browser" class="com.jitterbit.connector.jms.JmsQueueBrowser">
+    </bean>
+
+	<!-- this is the Message Driven POJO (MDP) -->    
+    <bean id="messageListener" class="com.jitterbit.connector.jms.JmsTopicSubscriber" >
+	    <property name="connectionFactory" ref="connectionFactory"/>
+	    <property name="destination" ref="topicDestination"/>
+    </bean>
+ 
+	<!-- and this is the message listener container -->
+	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer" >
+		<!-- never use concurrentConsumers with topics ! -->
+    	<property name="concurrentConsumers" value="1"/>	
+	    <property name="connectionFactory" ref="connectionFactory"/>
+	    <property name="destination" ref="topicDestination"/>
+	    <property name="messageListener" ref="messageListener" />
+		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE"/>
+		<property name="sessionTransacted" value="true"/>
+    	<!-- Specify topic style publish/subscribe -->
+    	<property name="pubSubDomain" value="true"/>
+    	<!-- Will guarantee that we receive messages in queue after broker goes down -->
+	    <property name="subscriptionDurable" value="true"/>
+	    <property name="clientId" value="myApp"/>
+	    <property name="durableSubscriptionName" value="myApp"/>		
+	    
+	</bean>
+	
+	
+ 	<bean id="jmsConnector" class="com.jitterbit.connector.jms.JmsConnector" >
+		<property name="messageSender" ref="queueSender" />
+		<property name="messageReceiver" ref="queueReceiver" />   
+		<property name="browser" ref="browser" />   
+		<property name="jmsQueue" ref="queueDefaultDestination" />
+		
+    </bean>
+</beans>
+         
